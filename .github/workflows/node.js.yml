@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
@@ -24,7 +23,7 @@ jobs:
     - name: Install pnpm
       run: npm install -g pnpm
     - name: Install dependencies
-      run: pnpm install --frozen-lockfile
-    - run: pnpm ci
+      # Use pnpm ci to install dependencies based on the pnpm-lock.yaml without updating it
+      run: pnpm ci
     - name: Build the project
       run: pnpm run build --if-present
